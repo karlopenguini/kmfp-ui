@@ -55,7 +55,7 @@ const Catalogue = ({
         {preHeader}
         <span className="font-bold italic"> {header}</span>
       </p>
-      <div className="flex flex-col space-y-6  overflow-auto">{catalogues}</div>
+      <div className="flex flex-col space-y-6 overflow-auto">{catalogues}</div>
     </div>
   );
 };
