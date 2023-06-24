@@ -21,13 +21,15 @@ export default async function WriteupPage({
 
   const writeups = data?.writeups.map((writeup) => {
     return (
-      <WriteupPreview
-        _createdAt={writeup._createdAt}
-        slug={writeup.slug}
-        writeupTags={writeup.writeupTags}
-        title={writeup.title}
-        writeupPost={writeup.writeupPost}
-      />
+      <div key={writeup.slug.current}>
+        <WriteupPreview
+          _createdAt={writeup._createdAt}
+          slug={writeup.slug}
+          writeupTags={writeup.writeupTags}
+          title={writeup.title}
+          writeupPost={writeup.writeupPost}
+        />
+      </div>
     );
   });
 

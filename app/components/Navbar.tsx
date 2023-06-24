@@ -29,6 +29,7 @@ const Navbar = ({ sub_routes }: NavbarProps) => {
     if (!route.sub_routes) {
       return (
         <Link
+          key={route.name}
           className="px-4 py-2 hover:cursor-pointer text-[10px]"
           href={route.path}
         >
@@ -50,17 +51,17 @@ const Navbar = ({ sub_routes }: NavbarProps) => {
       });
 
       return (
-        <ul className="px-4 py-2 group  text-[10px] z-10">
+        <div className="px-4 py-2 group  text-[10px] z-10">
           <div className="flex justify-between hover:cursor-pointer">
             {route.name}
             <div className=" -rotate-90 group-hover:rotate-0">
               <Chevron />
             </div>
           </div>
-          <div className="mt-2 p-1 space-y-1 absolute border border-secondary border-opacity-50 bg-background w-80 hidden group-hover:block">
+          <ul className="mt-2 p-1 space-y-1 absolute border border-secondary border-opacity-50 bg-background w-80 hidden group-hover:block">
             {subRouteComponents}
-          </div>
-        </ul>
+          </ul>
+        </div>
       );
     }
   });

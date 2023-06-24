@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-const CatalogueList = ({ _createdAt, title, writeupTags, slug }: any) => {
+const CatalogueList = ({ _createdAt, title, writeupTags, slug, key }: any) => {
   const dayjs = require("dayjs");
   const RANDOM_DATE = dayjs(_createdAt).format("MM/DD/YYYY hh:MM a");
   return (
-    <div className="flex flex-col space-y-1 text-[10px] text-main">
+    <div key={key} className="flex flex-col space-y-1 text-[10px] text-main">
       <p className="font-bold hover:underline">
         <Link href={`/writeup/post/${slug.current}`}>{title}</Link>
       </p>
@@ -40,6 +40,7 @@ const Catalogue = ({
   const catalogues = writeups.map((writeup) => {
     return (
       <CatalogueList
+        key={writeup.slug}
         _dateCreated={writeup._createdAt}
         title={writeup.title}
         writeupTags={writeup.writeupTags}
