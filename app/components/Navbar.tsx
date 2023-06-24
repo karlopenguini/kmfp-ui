@@ -1,8 +1,20 @@
 import Link from "next/link";
 import Chevron from "./svg/Chevron";
 
-const Navbar = () => {
+interface NavbarProps {
+  sub_routes: {
+    name: string;
+    path: string;
+  }[];
+}
+
+const Navbar = ({ sub_routes }: NavbarProps) => {
   const routes = [
+    {
+      name: "Writeups",
+      path: "",
+      sub_routes,
+    },
     {
       name: "About",
       path: "/about",
@@ -10,28 +22,6 @@ const Navbar = () => {
     {
       name: "Photos",
       path: "/photos",
-    },
-    {
-      name: "Writeups",
-      path: "",
-      sub_routes: [
-        {
-          name: "How to suck dikc",
-          path: "/writeup/how-to-suck-dick",
-        },
-        {
-          name: "how to suck pussy",
-          path: "/writeup/how-to-suck-pussy",
-        },
-        {
-          name: "eat ass",
-          path: "/writeup/eat-ass",
-        },
-        {
-          name: "gay",
-          path: "/writeup/gay",
-        },
-      ],
     },
   ];
 
@@ -60,14 +50,14 @@ const Navbar = () => {
       });
 
       return (
-        <ul className="px-4 py-2 group  text-[10px]">
+        <ul className="px-4 py-2 group  text-[10px] z-10">
           <div className="flex justify-between hover:cursor-pointer">
             {route.name}
             <div className=" -rotate-90 group-hover:rotate-0">
               <Chevron />
             </div>
           </div>
-          <div className="mt-2 absolute border border-secondary border-opacity-50 bg-background w-80 hidden group-hover:block">
+          <div className="mt-2 p-1 space-y-1 absolute border border-secondary border-opacity-50 bg-background w-80 hidden group-hover:block">
             {subRouteComponents}
           </div>
         </ul>
