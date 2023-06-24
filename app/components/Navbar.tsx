@@ -51,7 +51,7 @@ const Navbar = ({ sub_routes }: NavbarProps) => {
       });
 
       return (
-        <div className="px-4 py-2 group  text-[10px] z-10">
+        <div key={route.name} className="px-4 py-2 group  text-[10px] z-10">
           <div className="flex justify-between hover:cursor-pointer">
             {route.name}
             <div className=" -rotate-90 group-hover:rotate-0">
