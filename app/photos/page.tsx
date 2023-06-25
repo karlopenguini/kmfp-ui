@@ -8,12 +8,6 @@ import { PhotoPayload } from "@/types";
 import { photosQuery } from "@/lib/sanity.queries";
 
 const PhotosPage = async () => {
-  const smallItemStyles: React.CSSProperties = {
-    cursor: "pointer",
-    objectFit: "cover",
-    width: "100%",
-    maxHeight: "100%",
-  };
   const client = getClient();
   const builder = imageUrlBuilder(client);
   function urlFor(source: any) {
@@ -43,12 +37,14 @@ const PhotosPage = async () => {
         caption={"CC by " + photoPayload.attribution}
       >
         {({ ref, open }) => (
-          <img
-            style={smallItemStyles}
-            src={urlFor(photoPayload.photo).maxWidth(400).url()}
-            ref={ref as React.MutableRefObject<HTMLImageElement>}
-            onClick={open}
-          />
+          <div className="hover:cursor-pointer relative w-full after:content-[''] after:block after:pb-[100%]">
+            <img
+              className="absolute w-full h-full object-cover hover:opacity-75"
+              src={urlFor(photoPayload.photo).maxWidth(400).url()}
+              ref={ref as React.MutableRefObject<HTMLImageElement>}
+              onClick={open}
+            />
+          </div>
         )}
       </Item>
     );
@@ -57,14 +53,7 @@ const PhotosPage = async () => {
     <section className="mx-[105px] mt-16  space-y-6">
       <h1 className="text-4xl">Photos</h1>
       <Gallery id="photos">
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "240px 171px 171px",
-            gridTemplateRows: "114px 114px",
-            gridGap: 12,
-          }}
-        >
+        <div className="grid-cols-[repeat(3,1fr)] grid auto-rows-auto gap-0.5">
           {GalleryItems}
         </div>
       </Gallery>
