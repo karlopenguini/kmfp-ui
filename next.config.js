@@ -10,6 +10,9 @@ const nextConfig = {
           },
           {
             hostname: 'cdn.sanity.io'
+          },
+          {
+            hostname: 'xchyxsks.api.sanity.io'
           }
         ],
       },
