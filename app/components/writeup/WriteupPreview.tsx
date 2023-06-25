@@ -1,6 +1,9 @@
-import { MDXRemote } from "next-mdx-remote/rsc";
+import { MDXRemote, compileMDX } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import Chevron from "../svg/Chevron";
+import remarkGfm from "remark-gfm";
+import rehypeSanitize from "rehype-sanitize";
+import rehypeRaw from "rehype-raw";
 import { BiTime, BiSolidRightArrow } from "react-icons/bi";
 import { IoPricetagSharp } from "react-icons/io5";
 
@@ -23,6 +26,17 @@ export default async function WriteupPreview({
   const url = `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/selected/${month}/${day}`;
   const response = await fetch(url, { cache: "no-store" });
   const res: any = await response.json();
+
+  const { content } = await compileMDX<{ title: string }>({
+    source: writeupPost,
+    options: {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: [],
+        format: "mdx",
+      },
+    },
+  });
   return (
     <div className={`w-full space-y-10 my-${marginTop}`}>
       <div>
@@ -41,8 +55,8 @@ export default async function WriteupPreview({
         <h1 className="text-5xl w-full hover:underline hover:text-main  text-[#303030] font-serif">
           <Link href={`/writeup/post/${slug.current}`}>{title}</Link>
         </h1>
-        <div className="mt-3 flex space-x-4 text-xs text-main whitespace-nowrap">
-          <div className="flex items-center space-x-2 group hover:underline hover:cursor-pointer rounded-sm">
+        <div className="mt-3 flex space-x-4 text-[11px] text-main">
+          <div className="whitespace-nowrap flex items-center space-x-2 group hover:underline hover:cursor-pointer rounded-sm">
             <div className="absolute z-20 group-hover:visible invisible w-52 -translate-x-52 whitespace-break-spaces flex items-center space-x-0">
               <p className="bg-main p-2 text-[#FFFFFF] ">
                 {res.selected[0].text}
@@ -56,14 +70,12 @@ export default async function WriteupPreview({
           </div>
           <div className="flex items-center space-x-2 text-main">
             <IoPricetagSharp />
-            <p className="w-full whitespace-break-spaces">
-              {writeupTags.join(", ")}
-            </p>
+            <p className="">{writeupTags.join(", ")}</p>
           </div>
         </div>
       </div>
-      <div className="prose text-sm leading-6 w-full">
-        <MDXRemote source={writeupPost} />
+      <div className="prose text-[#000000] text-[12px] text-justify">
+        {content}
       </div>
     </div>
   );
