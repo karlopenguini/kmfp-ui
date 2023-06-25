@@ -8,7 +8,7 @@ import { layoutQuery } from "@/lib/sanity.queries";
 import { LayoutPayload } from "@/types";
 import LogoSmall from "./components/svg/LogoSmall";
 export const metadata: Metadata = {
-  title: "Karlo Palisoc's Blog",
+  title: "kmfp",
   description: "Created by Karlo Miguel F Palisoc",
 };
 
