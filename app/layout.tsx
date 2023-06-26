@@ -25,7 +25,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="max-w-[1024px] mx-auto px-24 mt-20 max-md:w-full max-md::mx-0 max-md:px-0 max-md:mt-0">
-        <nav className="">
+        <nav className="w-full">
           <Header />
           <Navbar sub_routes={data.writeupCategories} />
         </nav>
