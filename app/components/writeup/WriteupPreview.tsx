@@ -52,10 +52,10 @@ export default async function WriteupPreview({
           </div>
         )}
 
-        <h1 className="text-5xl w-full hover:underline hover:text-main  text-[#303030] font-serif">
+        <h1 className="md:text-5xl  text-3xl w-full hover:underline hover:text-main  text-[#303030] font-serif">
           <Link href={`/writeup/post/${slug.current}`}>{title}</Link>
         </h1>
-        <div className="mt-3 flex space-x-4 text-[11px] text-main">
+        <div className="mt-3 flex flex-col md:flex-row space-y-1 md:space-y-0 space-x-0 md:space-x-4 text-[11px] text-main">
           <div className="whitespace-nowrap flex items-center space-x-2 group hover:underline hover:cursor-pointer rounded-sm">
             <div className="absolute z-20 group-hover:visible invisible w-52 -translate-x-52 whitespace-break-spaces flex items-center space-x-0">
               <p className="bg-main p-2 text-[#FFFFFF] ">
@@ -69,8 +69,7 @@ export default async function WriteupPreview({
             <p>{DATE_CREATED}</p>
           </div>
           <div className="flex items-center space-x-2 text-main">
-            <IoPricetagSharp />
-            <p className="">{writeupTags.join(", ")}</p>
+            <p className="text-elipsis">{writeupTags.join(", ")}</p>
           </div>
         </div>
       </div>

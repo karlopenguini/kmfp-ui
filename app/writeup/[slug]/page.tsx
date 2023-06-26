@@ -39,8 +39,8 @@ export default async function WriteupPage({
         header={data!.writeupCategory.title}
         subheader={data!.writeupCategory.description}
       />
-      <div className="grid grid-cols-[1fr,188px] mt-5 gap-5">
-        <div className="ml-[105px] mt-10 flex flex-col space-y-10">
+      <div className="grid md:grid-cols-[1fr,188px] mt-5 gap-5">
+        <div className="md:mx-[105px] mx-4 md:mt-10 mt-8 flex flex-col space-y-10">
           {data?.writeups.length == 0 ? "No posts yet." : writeups}
         </div>
 

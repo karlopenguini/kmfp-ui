@@ -50,7 +50,7 @@ const PhotosPage = async () => {
     );
   });
   return (
-    <section className="mx-[105px] mt-16  space-y-6">
+    <section className="md:mx-[105px] mx-4 md:mt-4 mt-8  space-y-6">
       <h1 className="text-4xl">Photos</h1>
       <Gallery id="photos">
         <div className="grid-cols-[repeat(3,1fr)] grid auto-rows-auto gap-0.5">

@@ -1,5 +1,7 @@
+"use client";
 import Link from "next/link";
 import Chevron from "./svg/Chevron";
+import { useState } from "react";
 
 interface NavbarProps {
   sub_routes: {
@@ -24,6 +26,8 @@ const Navbar = ({ sub_routes }: NavbarProps) => {
       path: "/photos",
     },
   ];
+
+  const [visibility, setVisibility] = useState(false);
 
   const Routes = routes.map((route) => {
     if (!route.sub_routes) {
@@ -53,17 +57,25 @@ const Navbar = ({ sub_routes }: NavbarProps) => {
       return (
         <div
           key={route.name + route.path}
-          className="px-4 py-2 group  text-[10px] z-10"
+          className="px-4 py-2 group  text-[10px] z-10 select-none"
         >
-          <div className="flex justify-between hover:cursor-pointer">
+          <div
+            onClick={() => setVisibility(!visibility)}
+            className="flex justify-between hover:cursor-pointer"
+          >
             {route.name}
-            <div className=" -rotate-90 group-hover:rotate-0">
+            <div
+              className={` ${visibility ? "-rotate-90" : "rotate-0"}
+              `}
+            >
               <Chevron />
             </div>
           </div>
-          <ul className="mt-2 p-1 space-y-1 absolute border border-secondary border-opacity-50 bg-background w-80 hidden group-hover:block">
-            {subRouteComponents}
-          </ul>
+          {visibility && (
+            <ul className="mt-2 p-1 space-y-1 absolute border border-secondary border-opacity-50 bg-background w-80">
+              {subRouteComponents}
+            </ul>
+          )}
         </div>
       );
     }

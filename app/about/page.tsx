@@ -29,7 +29,7 @@ const AboutPage = () => {
   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠋⠀⠈⠉⠁⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
     `;
   return (
-    <section className="mx-[105px] mt-16 flex flex-col space-y-6">
+    <section className="md:mx-[105px] mx-4 md:mt-4 mt-8 flex flex-col space-y-6">
       <h1 className="text-4xl">About</h1>
       <p className="text-sm leading-8">
         The exchange of knowledge among individuals has consistently served as

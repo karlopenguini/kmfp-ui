@@ -24,7 +24,7 @@ export default async function WriteupPost({
   return (
     <>
       <div className="mt-5 z-0">
-        <div className="mx-[105px] flex flex-col">
+        <div className="md:mx-[105px] mx-4 flex flex-col">
           {data?.writeupCoverImage && (
             <div className="w-full relative h-[201px]">
               <Image

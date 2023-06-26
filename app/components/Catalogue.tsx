@@ -50,7 +50,7 @@ const Catalogue = ({
   });
 
   return (
-    <div className="max-h-72 flex flex-col space-y-4 px-4 py-2 bg-background border border-secondary border-opacity-50">
+    <div className="max-h-72 md:flex hidden flex-col space-y-4 px-4 py-2 bg-background border border-secondary border-opacity-50">
       <p className="text-[11px] ">
         {preHeader}
         <span className="font-bold italic"> {header}</span>
