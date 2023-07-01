@@ -1,12 +1,12 @@
-import { MDXRemote, compileMDX } from "next-mdx-remote/rsc";
+import { compileMDX } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import Chevron from "../svg/Chevron";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeRaw from "rehype-raw";
 import { BiTime, BiSolidRightArrow } from "react-icons/bi";
-import { IoPricetagSharp } from "react-icons/io5";
-
 export default async function WriteupPreview({
   categoryName = "",
   parentSlug = "",
@@ -31,9 +31,9 @@ export default async function WriteupPreview({
     source: writeupPost,
     options: {
       mdxOptions: {
-        remarkPlugins: [remarkGfm],
-        rehypePlugins: [],
-        format: "mdx",
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeRaw, rehypeSanitize, rehypeKatex],
+        format: "md",
       },
     },
   });
